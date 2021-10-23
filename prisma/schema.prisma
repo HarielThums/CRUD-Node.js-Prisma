@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Categoria {
+  id        String   @id @default(uuid())
+  code      Int
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Produto Produto[]
+  @@map("categoria")
+}
+
+model Cliente {
+  id        String   @id @default(uuid())
+  code      Int
+  name      String
+  birthDate DateTime
+  email     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Venda Venda[]
+  @@map("cliente")
+}
+
+model Venda {
+  id        String   @id @default(uuid())
+  code      Int
+  value     String
+  saleDate  DateTime
+  cliente   Cliente  @relation(fields: [clienteId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  clienteId String
+  @@map("venda")
+}
+
+model Produto {
+  id          String    @id @default(uuid())
+  code        Int
+  name        String
+  description String
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  categoriaId String
+  Estoque     Estoque[]
+  @@map("produto")
+}
+
+model Estoque {
+  id        String   @id @default(uuid())
+  produto   Produto  @relation(fields: [produtoId], references: [id])
+  quantity  Int
+  price     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  produtoId String
+  @@map("estoque")
+}
