@@ -12,8 +12,9 @@
 
   - Primeiro: `docker-compose up -d`
   - Segundo: `yarn`
-  - Terceiro: `yarn prisma migrate dev`
-  - Quarto: `yarn dev`
+  - Terceiro Altere o nome do arquivo `.env.example`, para `.env`
+  - Quarto: `yarn prisma migrate dev`
+  - Quinto: `yarn dev`
 
 <br/>
 
