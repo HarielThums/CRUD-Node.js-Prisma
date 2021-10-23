@@ -13,5 +13,3 @@ services:
       - MYSQL_ROOT_USER=root
       - MYSQL_DATABASE=docker
       - MYSQL_ROOT_PASSWORD=docker
-    volumes:
-      - container-volume:./src/database/dump
