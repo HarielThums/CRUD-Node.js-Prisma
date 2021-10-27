@@ -4,9 +4,8 @@
 
 - **Requisitos:**
   - Docker/docker-compose;
-  - Node.js;
+  - Node.js
 
-<br/>
 
 - **Comandos para iniciar o projeto:**
 
@@ -16,12 +15,8 @@
   - Quarto: `yarn prisma migrate dev`
   - Quinto: `yarn dev`
 
-<br/>
-
 - **Collections:**
   - Export das collections está na pasta `./insomnia-colletions`
-
-<br/>
 
 - **Dump Database:**
   - Dump do database está na pasta `./src/database/dump/`
